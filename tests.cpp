@@ -147,12 +147,12 @@ void testCopyAssign()
 void testMultiplyWithAnotherMatrix()
 {
     Matrix m(3, 3);
-    stringstream ss;
+    std::stringstream ss;
     ss << "1 2 3 4 5 6 7 8 9";
     ss >> m;
 
     Matrix n(3, 3);
-    stringstream hh;
+    std::stringstream hh;
     hh << "1 2 3 4 5 6 7 8 9";
     hh >> n;
 
@@ -269,12 +269,12 @@ void testAddition()
 void testMultiplyAssignWithMatrix()
 {
     Matrix m(3, 3);
-    stringstream ss;
+    std::stringstream ss;
     ss << "1 2 3 4 5 6 7 8 9";
     ss >> m;
 
     Matrix n(3, 3);
-    stringstream hh;
+    std::stringstream hh;
     hh << "1 2 3 4 5 6 7 8 9";
     hh >> n;
 
@@ -368,7 +368,7 @@ void testSubscript()
 {
     int size = 3;
     Matrix n(size, size);
-    stringstream hh;
+    std::stringstream hh;
     hh << "0 1 2 3 4 5 6 7 8";
     hh >> n;
 
@@ -385,7 +385,7 @@ void testSubscriptConst()
 {
     int size = 3;
     Matrix n(size, size);
-    stringstream hh;
+    std::stringstream hh;
     hh << "1 2 3 4 5 6 7 8 9";
     hh >> n;
 
@@ -404,7 +404,7 @@ void testSubscriptAssign()
 {
     int size = 3;
     Matrix n(size, size);
-    stringstream hh;
+    std::stringstream hh;
     hh << "1 2 3 4 5 6 7 8 9";
     hh >> n;
 
@@ -426,7 +426,7 @@ void testEquality()
 {
     int size = 3;
     Matrix n(size, size);
-    stringstream hh;
+    std::stringstream hh;
     hh << "1 2 3 4 5 6 7 8 9";
     hh >> n;
 
@@ -447,7 +447,7 @@ void testInequality()
 {
     int size = 3;
     Matrix n(size, size);
-    stringstream hh;
+    std::stringstream hh;
     hh << "1 2 3 4 5 6 7 8 9";
     hh >> n;
 
@@ -468,7 +468,7 @@ void testInputStream()
 {
     int size = 3;
     Matrix n(size, size);
-    stringstream hh;
+    std::stringstream hh;
     hh << "0 1 2 3 4 5 6 7 8";
     hh >> n;
 
@@ -488,7 +488,7 @@ void testOutputStream()
         n[i] = i;
     }
 
-    stringstream hh;
+    std::stringstream hh;
     hh << n;
     assert(hh.str() == "0 1 2\n3 4 5\n6 7 8");
 }
