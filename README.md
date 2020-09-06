@@ -13,3 +13,5 @@ Run the tests using:
 ```$xslt
 python3 tests.py
 ```
+
+![](giphy.gif)
