@@ -22,7 +22,8 @@ ERROR_MSGS = {
     "testHighCoor2": b"Index out of range.\n",
     "testInvalidDimMultiplyAssign": b"Invalid matrix dimensions.\n",
     "testZeroDivision": b"Division by zero.\n",
-    "testInputStream": b"Error loading from input stream.\n"
+    "testInputStream": b"Error loading from input stream.\n",
+    "testZeroDim": ""
 }
 
 myProgressBar = ProgressBar(nElements = 20, nIterations = 14)
@@ -36,7 +37,6 @@ for file in p.iterdir():
         if (e.returncode != 1):
             print(f"Case: {file.stem} - You should exit with 1 return value")
         if (e.stderr != ERROR_MSGS[file.stem]):
-            import pdb; pdb.set_trace()
             print(f"Case: {file.stem} - I think you should print {ERROR_MSGS[file.stem]},"
                   f"instead of {e.stderr}")
     else:
