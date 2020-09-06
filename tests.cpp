@@ -87,8 +87,8 @@ void testVectorize()
 
     foo.vectorize();
 
-    assert(foo.getRows() == 1);
-    assert(foo.getCols() == size * size);
+    assert(foo.getRows() == size * size);
+    assert(foo.getCols() == 1);
 
     for (int i = 0; i < size * size; ++i)
     {
