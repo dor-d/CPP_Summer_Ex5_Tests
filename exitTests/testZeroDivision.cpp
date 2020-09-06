@@ -8,7 +8,7 @@
 int main() {
     Matrix foo(3, 3);
 
-    stringstream hh;
+    std::stringstream hh;
     hh << "0 1 2 3 4 5 6 7 8";
     hh >> foo;
 
