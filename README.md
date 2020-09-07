@@ -1,10 +1,10 @@
 # Tests for ex5
 ## Usage
-On the school computers in the ex5 directory use: 
+On the school computers in your ex5 directory use: 
 ```$xslt
 git clone https://github.com/dor-d/CPP_Summer_Ex5_Tests.git
 ```
-Than move to the CPP_Summer_Ex5_Tests directory:
+Move to the directory CPP_Summer_Ex5_Tests:
 ```$xslt
 cd CPP_Summer_Ex5_Tests
 ```
