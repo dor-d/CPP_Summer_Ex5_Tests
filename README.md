@@ -4,7 +4,7 @@ On the school computers in your ex5 directory use:
 ```$xslt
 git clone https://github.com/dor-d/CPP_Summer_Ex5_Tests.git
 ```
-Move to the directory CPP_Summer_Ex5_Tests:
+Move to the directory ./CPP_Summer_Ex5_Tests:
 ```$xslt
 cd CPP_Summer_Ex5_Tests
 ```
