@@ -13,7 +13,7 @@ from PIL import Image
 from image2file import __save_to_file
 import filecmp
 
-myProgressBar = ProgressBar(nElements = 20, nIterations = 30)
+myProgressBar = ProgressBar(nElements = 50, nIterations = 30)
 progress_index = 0
 
 ERROR_MSGS = {
