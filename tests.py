@@ -14,7 +14,7 @@ from image2file import __lists_to_lines
 import filecmp
 import numpy
 
-myProgressBar = ProgressBar(nElements = 20, nIterations = 30)
+myProgressBar = ProgressBar(nElements = 50, nIterations = 30)
 progress_index = 0
 
 ERROR_MSGS = {
@@ -48,7 +48,7 @@ def save(img, name):
 
 def blackBoxTest():
     global progress_index
-    print("Finally, let's try some blackbox tests.")
+    print("Finally, let's try some blackbox tests.\n")
     images = Path("./images")
 
     for imageFile in images.iterdir():
@@ -75,13 +75,14 @@ def compareToSchool():
             print(f"Your output file of {case} is not the same as the school solution")
 
 def valgrindTest():
-    print("Unittest is done, let's try valgrind...")
+    print("Unittest is done, let's try valgrind...\n")
     output = subprocess.check_output("valgrind --track-origins=yes ./temp/unitTest".split(),
                                      stderr=subprocess.STDOUT)
     if b"ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)" not in output:
-        print("Valgrind detected error, please run 'valgrind --track-origins=yes ./temp/unitTest'")
+        print("Valgrind detected error, please run 'valgrind --track-origins=yes "
+              "./temp/unitTest'\n")
     else:
-        print("It seems like Valgrind did not detected any errors.")
+        print("It seems like Valgrind did not detect any errors.\n")
 
 def main():
     global progress_index
