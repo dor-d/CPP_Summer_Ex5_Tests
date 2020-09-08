@@ -98,9 +98,9 @@ def main():
     subprocess.run("g++ ./tests.cpp ./Matrix.cpp -o ./temp/unitTest".split())
 
     subprocess.run("./temp/unitTest")
-    valgrindTest()
+    # valgrindTest()
     blackBoxTest()
-    compareToSchool()
+    # compareToSchool()
 
 if __name__ == "__main__":
     main()
