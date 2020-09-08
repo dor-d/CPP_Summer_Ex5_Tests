@@ -10,8 +10,9 @@ if not os.path.exists('resultsToCompare'):
     os.makedirs('resultsToCompare')
 
 from PIL import Image
-from image2file import __save_to_file
+from image2file import __lists_to_lines
 import filecmp
+import numpy
 
 myProgressBar = ProgressBar(nElements = 20, nIterations = 30)
 progress_index = 0
@@ -38,6 +39,13 @@ ERROR_MSGS = {
 LENA_CASES = ['lena_blur.out', 'lena_quant_16_levels.out', 'lena_quant_2_levels.out',
               'lena_quant_4_levels.out', 'lena_sobel.out']
 
+def save(img, name):
+    as_arr = numpy.asarray(img)
+    fp = open(name, 'w')
+    fp.writelines(__lists_to_lines(as_arr))
+    fp.close()
+
+
 def blackBoxTest():
     global progress_index
     print("Finally, let's try some blackbox tests.")
@@ -49,13 +57,14 @@ def blackBoxTest():
         if imageFile.suffix != ".jpg" and imageFile.suffix != ".png":
             continue
         img_matrix = Image.open(str(imageFile.absolute())).convert('L').resize((128, 128))
-        __save_to_file(img_matrix)
+        name = f"{imageFile.stem}-before_process.out"
+        save(img_matrix, name)
         subprocess.run("g++ main.cpp Matrix.cpp -o ex4program".split())
         for option in ["quant", "blur", "sobel"]:
-            command = ["./ex4program", "image.out", option,
+            command = ["./ex4program", name, option,
                        f"./resultsToCompare/{imageFile.stem}_{option}.out"]
             subprocess.run(command)
-        os.remove("image.out")
+        os.remove(name)
 
 def compareToSchool():
     subprocess.run("g++ createLenaOutput.cpp Matrix.cpp -o createLena".split())
