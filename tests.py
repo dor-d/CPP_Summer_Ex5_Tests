@@ -35,9 +35,6 @@ ERROR_MSGS = {
     "testZeroDim": b""
 }
 
-LENA_CASES = ['lena_blur.out', 'lena_quant_16_levels.out', 'lena_quant_2_levels.out',
-              'lena_quant_4_levels.out', 'lena_sobel.out']
-
 def blackBoxTest():
     global progress_index
     print("Finally, let's try some blackbox tests.\n")
@@ -50,25 +47,18 @@ def blackBoxTest():
             continue
         img_matrix = Image.open(str(imageFile.absolute())).convert('L').resize((128, 128))
         __save_to_file(img_matrix)
-        subprocess.run("g++ main.cpp Matrix.cpp -o ex4program".split())
+        subprocess.run("g++ main.cpp Matrix.cpp -o ex5program".split())
         for option in ["quant", "blur", "sobel"]:
-            command = ["./ex4program", "image.out", option,
+            command = ["./ex5program", "image.out", option,
                        f"./resultsToCompare/{imageFile.stem}_{option}.out"]
             subprocess.run(command)
         os.remove("image.out")
-
-def compareToSchool():
-    subprocess.run("g++ createLenaOutput.cpp Matrix.cpp -o createLena".split())
-    subprocess.run("./createLena")
-
-    for case in LENA_CASES:
-        if filecmp.cmp(f"./schoolOutput/{case}", f"./resultsToCompare/{case}", shallow=False) is False:
-            print(f"Your output file of {case} is not the same as the school solution")
+    print("Now you can compare your results from './resultsToCompare' with your freinds\n")
 
 def valgrindTest():
     print("Unittest is done, let's try valgrind...\n")
-    output = subprocess.check_output("valgrind --track-origins=yes ./temp/unitTest".split(),
-                                     stderr=subprocess.STDOUT)
+    output = subprocess.check_output("valgrind --leak-check=full --track-origins=yes "
+                                     "./temp/unitTest".split(), stderr=subprocess.STDOUT)
     if b"ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)" not in output:
         print("Valgrind detected error, please run 'valgrind --track-origins=yes "
               "./temp/unitTest'\n")
@@ -98,9 +88,8 @@ def main():
     subprocess.run("g++ ./tests.cpp ./Matrix.cpp -o ./temp/unitTest".split())
 
     subprocess.run("./temp/unitTest")
-    # valgrindTest()
+    valgrindTest()
     blackBoxTest()
-    # compareToSchool()
 
 if __name__ == "__main__":
     main()
