@@ -64,7 +64,6 @@ def blackBoxTest():
             command = ["./ex4program", name, option,
                        f"./resultsToCompare/{imageFile.stem}_{option}.out"]
             subprocess.run(command)
-        os.remove(name)
 
 def compareToSchool():
     subprocess.run("g++ createLenaOutput.cpp Matrix.cpp -o createLena".split())
@@ -108,7 +107,7 @@ def main():
 
     subprocess.run("./temp/unitTest")
     valgrindTest()
-    blackBoxTest()
+    # blackBoxTest()
     compareToSchool()
 
 if __name__ == "__main__":

@@ -69,5 +69,10 @@ int main(int argc, char **argv)
     result = quantization(lena, 16);
     writeMatrixToFile("./resultsToCompare/lena_quant_16_levels.out", result);
 
+    result = sobel(lena);
+    writeMatrixToFile("./resultsToCompare/lena_sobel.out", result);
+
+    result = blur(lena);
+    writeMatrixToFile("./resultsToCompare/lena_blur.out", result);
     return 0;
 }

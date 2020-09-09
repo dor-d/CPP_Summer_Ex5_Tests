@@ -9,3 +9,4 @@ ex4program
 unitTest.exe.stackdump
 createLena
 a.out
+*.out
